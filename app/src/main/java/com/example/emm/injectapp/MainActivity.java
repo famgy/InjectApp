@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button mButton1;
+    private Button mButton4;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -31,6 +32,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (v == (View)mButton1) {
                     System.out.println("HttpClient 按钮");
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            HttpClientTest client = new HttpClientTest();
+                            client.get("http://www.baidu.com");
+                        }
+                    }).start();
+                }
+            }
+        });
+
+        mButton4 = (Button)this.findViewById(R.id.button4);
+        mButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v == (View)mButton4) {
+                    System.out.println("Hook 按钮");
 
                     System.loadLibrary("elfhook");
                 }

@@ -192,7 +192,6 @@ void elf_hooker::hook_all_modules(const char* func_name, void* pfn_new, void** p
     {
         if (this->m_prehook_cb && !this->m_prehook_cb(itor->second.get_module_name(), func_name))
         {
-            log_info("------- get_func_name: %s, func_name: %s\n", itor->second.get_module_name(), func_name);
             continue;
         }
         log_info("Hook Module : %s, Function: %s\n", itor->second.get_module_name(), func_name);

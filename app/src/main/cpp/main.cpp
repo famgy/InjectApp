@@ -41,7 +41,7 @@ extern "C" {
 
 static bool __prehook(const char* module_name, const char* func_name)
 {
-    if (strstr(module_name, "libwebviewchromium_loader.so") != NULL)
+    if (strstr(module_name, "libstdc++.so") != NULL)
     {
        return true;
     }
@@ -57,7 +57,7 @@ void __attribute__((constructor)) libhook_main(int argc, char* argv[])
     hooker.phrase_proc_maps();
     hooker.dump_module_list();
     //hooker.hook_all_modules("dlopen", (void*)__nativehook_impl_dlopen, (void**)&__old_impl_dlopen);
-    //hooker.hook_all_modules("connect", (void*)__nativehook_impl_connect, (void**)&__old_impl_connect);
-    hooker.hook_all_modules("android_dlopen_ext", (void*)__nativehook_impl_android_dlopen_ext, (void**)&__old_impl_android_dlopen_ext);
+    hooker.hook_all_modules("connect", (void*)__nativehook_impl_connect, (void**)&__old_impl_connect);
+    //hooker.hook_all_modules("android_dlopen_ext", (void*)__nativehook_impl_android_dlopen_ext, (void**)&__old_impl_android_dlopen_ext);
 
 }
