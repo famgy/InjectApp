@@ -1,5 +1,7 @@
 package com.example.emm.injectapp;
 
+import android.content.Context;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button mButton1;
+    private Button mButton2;
     private Button mButton4;
 
     // Used to load the 'native-lib' library on application startup.
@@ -39,6 +42,19 @@ public class MainActivity extends AppCompatActivity {
                             client.get("http://www.baidu.com");
                         }
                     }).start();
+                }
+            }
+        });
+
+        mButton2 = (Button)this.findViewById(R.id.button2);
+        mButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WifiManager wifiManager = (WifiManager) MainActivity.this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                if (wifiManager.isWifiEnabled()) {
+                    wifiManager.setWifiEnabled(false);
+                } else {
+                    wifiManager.setWifiEnabled(true);
                 }
             }
         });
