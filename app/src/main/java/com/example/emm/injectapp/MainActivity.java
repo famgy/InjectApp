@@ -29,22 +29,22 @@ public class MainActivity extends AppCompatActivity {
         //tv.setText(stringFromJNI());
         tv.setText(stringFromJNI());
 
-        mButton1 = (Button)this.findViewById(R.id.button1);
-        mButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v == (View)mButton1) {
-                    System.out.println("HttpClient 按钮");
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            HttpClientTest client = new HttpClientTest();
-                            client.get("http://www.baidu.com");
-                        }
-                    }).start();
-                }
-            }
-        });
+//        mButton1 = (Button)this.findViewById(R.id.button1);
+//        mButton1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (v == (View)mButton1) {
+//                    System.out.println("HttpClient 按钮");
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            HttpClientTest client = new HttpClientTest();
+//                            client.get("http://www.baidu.com");
+//                        }
+//                    }).start();
+//                }
+//            }
+//        });
 
         mButton2 = (Button)this.findViewById(R.id.button2);
         mButton2.setOnClickListener(new View.OnClickListener() {
